@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Gorgeous Choti Vaibz 😚</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        :root {
+            --warm-cream: #FFF5E8;
+            --soft-peach: #FFD4B8;
+            --warm-coral: #FFB4A2;
+            --gentle-rose: #FFCAD4;
+            --soft-lavender: #E8C4E0;
+            --warm-gold: #F4D58D;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--warm-cream) 0%, var(--soft-peach) 50%, var(--gentle-rose) 100%);
+            min-height: 100vh;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFB4A2 0%, #FFCAD4 50%, #E8C4E0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .loading-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .loading-hearts {
+            display: flex;
+            gap: 15px;
+        }
+
+        .loading-heart {
+            font-size: 30px;
+            animation: bounce 0.6s ease-in-out infinite;
+        }
+
+        .loading-heart:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .loading-heart:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-heart:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Page container - FIXED */
+        .page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            overflow: hidden;
+            display: none;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            display: flex;
+            z-index: 10;
+        }
+
+        /* Opening Photo Mosaic Page - FIXED LAYOUT */
+        .photo-mosaic-page {
+            padding: 0;
+            position: relative;
+        }
+
+        /* Magical floating particles background */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Photo Grid Container - FIXED */
+        .photo-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-auto-rows: minmax(150px, 1fr);
+            gap: 12px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(255, 180, 162, 0.3);
+            animation: fadeInPhoto 0.8s ease-out backwards;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.15) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 138, 174, 0.5);
+            z-index: 50;
+            border-radius: 20px;
+        }
+
+        @keyframes fadeInPhoto {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Different sizes for mosaic effect - FIXED */
+        .photo-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .photo-item:nth-child(2) { grid-column: span 1; grid-row: span 2; }
+        .photo-item:nth-child(3) { grid-column: span 2; grid-row: span 1; }
+        .photo-item:nth-child(4) { grid-column: span 1; grid-row: span 2; }
+        .photo-item:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(7) { grid-column: span 1; grid-row: span 2; }
+        .photo-item:nth-child(8) { grid-column: span 2; grid-row: span 1; }
+        .photo-item:nth-child(9) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(10) { grid-column: span 2; grid-row: span 1; }
+        .photo-item:nth-child(11) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(12) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(13) { grid-column: span 2; grid-row: span 1; }
+        .photo-item:nth-child(14) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(15) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(16) { grid-column: span 2; grid-row: span 1; }
+        .photo-item:nth-child(17) { grid-column: span 1; grid-row: span 1; }
+        .photo-item:nth-child(18) { grid-column: span 1; grid-row: span 1; }
+
+        .photo-item .photo-content {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        /* Images auto-adjust to fill container */
+        .photo-item .photo-content img,
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 35px rgba(255, 180, 162, 0.5);
+            z-index: 10;
+        }
+
+        .photo-item:hover .photo-content {
+            transform: scale(1.1);
+        }
+
+        /* Gentle floating animation */
+        .photo-item:nth-child(odd) {
+            animation: fadeInPhoto 0.8s ease-out backwards, gentleFloat 4s ease-in-out infinite;
+        }
+
+        .photo-item:nth-child(even) {
+            animation: fadeInPhoto 0.8s ease-out backwards, gentleFloat 4s ease-in-out infinite 1s;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Stagger animation delays */
+        .photo-item:nth-child(1) { animation-delay: 0s; }
+        .photo-item:nth-child(2) { animation-delay: 0.1s; }
+        .photo-item:nth-child(3) { animation-delay: 0.2s; }
+        .photo-item:nth-child(4) { animation-delay: 0.3s; }
+        .photo-item:nth-child(5) { animation-delay: 0.4s; }
+        .photo-item:nth-child(6) { animation-delay: 0.5s; }
+        .photo-item:nth-child(7) { animation-delay: 0.6s; }
+        .photo-item:nth-child(8) { animation-delay: 0.7s; }
+        .photo-item:nth-child(9) { animation-delay: 0.8s; }
+        .photo-item:nth-child(10) { animation-delay: 0.9s; }
+        .photo-item:nth-child(n+11) { animation-delay: 1s; }
+
+        /* Center Button Container - FIXED */
+        .center-button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            text-align: center;
+        }
+
+        /* Glowing backdrop for button */
+        .button-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 212, 184, 0.4) 40%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: pulseGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, #FFB4A2 0%, #FFCAD4 100%);
+            border: none;
+            padding: 22px 55px;
+            font-size: 28px;
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 180, 162, 0.5);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            animation: fadeInButton 1.2s ease-out 1.2s backwards;
+        }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                transform: scale(0.5) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .start-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .start-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .start-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 45px rgba(255, 180, 162, 0.7);
+        }
+
+        .start-button:active {
+            transform: scale(1.05) translateY(-2px);
+        }
+
+        /* Sparkles around button */
+        .sparkle {
+            position: absolute;
+            font-size: 16px;
+            animation: sparkleFloat 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .sparkle:nth-child(1) {
+            top: -30px;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: -35px;
+            right: -25px;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: -30px;
+            left: -25px;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(4) {
+            bottom: -35px;
+            right: -30px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-10px) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* === ELEGANT PAGE TRANSITION === */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 245, 232, 0.95) 0%, rgba(255, 212, 184, 0.95) 50%, rgba(255, 202, 212, 0.95) 100%);
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
+        }
+
+        /* Floating transition hearts */
+        .transition-heart {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0;
+            animation: transitionHeartFloat 2s ease-out;
+        }
+
+        @keyframes transitionHeartFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0.5) rotate(0deg);
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5) rotate(360deg);
+            }
+        }
+
+        /* === WELCOME PAGE === */
+        .welcome-page {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-content {
+            max-width: 700px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 180, 162, 0.3);
+            backdrop-filter: blur(10px);
+            animation: welcomeFadeIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Faded hearts pattern on welcome - BIGGER */
+        .welcome-content::before {
+            content: '💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 45px;
+            opacity: 0.12;
+            word-spacing: 15px;
+            line-height: 90px;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Additional gradient hearts */
+        .welcome-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 202, 212, 0.18) 12%, transparent 12%),
+                radial-gradient(circle, rgba(255, 180, 162, 0.12) 18%, transparent 18%);
+            background-size: 70px 70px, 100px 100px;
+            background-position: 0 0, 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .welcome-content > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes welcomeFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .welcome-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 48px;
+            color: #FF8AAE;
+            margin-bottom: 30px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(255, 138, 174, 0.2);
+        }
+
+        .welcome-message {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .continue-button {
+            background: linear-gradient(135deg, #FFB4A2 0%, #FFCAD4 100%);
+            border: none;
+            padding: 18px 45px;
+            font-size: 22px;
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 180, 162, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .continue-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 180, 162, 0.6);
+        }
+
+        .continue-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Decorative elements on welcome page */
+        .welcome-decor {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.3;
+            animation: floatDecor 4s ease-in-out infinite;
+        }
+
+        .welcome-decor:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .welcome-decor:nth-child(2) {
+            top: 15%;
+            right: 12%;
+            animation-delay: 1s;
+        }
+
+        .welcome-decor:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .welcome-decor:nth-child(4) {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatDecor {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* === CAKE GAME PAGE === */
+        .cake-game-page {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 180, 162, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: welcomeFadeIn 1s ease-out;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Faded hearts pattern background - BIGGER AND MORE VISIBLE */
+        .game-container::before {
+            content: '💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 50px;
+            opacity: 0.15;
+            word-spacing: 20px;
+            line-height: 100px;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+
+        /* Additional gradient hearts layer */
+        .game-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 202, 212, 0.2) 15%, transparent 15%),
+                radial-gradient(circle, rgba(255, 180, 162, 0.15) 20%, transparent 20%),
+                radial-gradient(circle, rgba(255, 202, 212, 0.25) 10%, transparent 10%);
+            background-size: 80px 80px, 120px 120px, 60px 60px;
+            background-position: 0 0, 40px 40px, 60px 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Circular character with face */
+        .blow-character {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FFD4B8 0%, #FFCAD4 100%);
+            border-radius: 50%;
+            border: 4px solid #FF8AAE;
+            box-shadow: 0 8px 25px rgba(255, 138, 174, 0.3);
+            z-index: 15;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .blow-character > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .blow-character.hide {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+        }
+
+        /* Character eyes - WIDER SPACING */
+        .char-eye {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            top: 40px;
+        }
+
+        .char-eye.left {
+            left: 25px;
+        }
+
+        .char-eye.right {
+            right: 25px;
+        }
+
+        /* Character expressions */
+        .char-mouth {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            border: 3px solid #FF8AAE;
+            border-top: none;
+            border-radius: 0 0 30px 30px;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+
+        /* Surprised mouth */
+        .blow-character.surprised .char-mouth {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #FF8AAE;
+            top: 60px;
+        }
+
+        /* Annoyed eyes */
+        .blow-character.annoyed .char-eye {
+            height: 4px;
+            border-radius: 2px;
+            top: 45px;
+        }
+
+        .blow-character.annoyed .char-mouth {
+            border-radius: 30px 30px 0 0;
+            border-top: 3px solid #FF8AAE;
+            border-bottom: none;
+            top: 70px;
+        }
+
+        /* Angry expression */
+        .blow-character.angry .char-eye {
+            height: 3px;
+            width: 15px;
+            border-radius: 0;
+            background: #D32F2F;
+        }
+
+        .blow-character.angry .char-eye.left {
+            transform: rotate(-20deg);
+        }
+
+        .blow-character.angry .char-eye.right {
+            transform: rotate(20deg);
+        }
+
+        .blow-character.angry .char-mouth {
+            width: 40px;
+            border-color: #D32F2F;
+            border-radius: 30px 30px 0 0;
+            border-top: 3px solid #D32F2F;
+            border-bottom: none;
+        }
+
+        /* Happy expression */
+        .blow-character.happy .char-mouth {
+            width: 40px;
+            height: 20px;
+        }
+
+        /* Wind animation - blows from character to cake */
+        .wind-effect {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, 0);
+            font-size: 30px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .wind-effect.active {
+            animation: windBlowTowardsCake 1s ease-out forwards;
+        }
+
+        @keyframes windBlowTowardsCake {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 0) scale(0.5);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(-50%, 20px) scale(1);
+            }
+            40% {
+                opacity: 0.9;
+                transform: translate(-50%, 80px) scale(1.3) rotate(10deg);
+            }
+            60% {
+                opacity: 0.7;
+                transform: translate(-50%, 140px) scale(1.5) rotate(-10deg);
+            }
+            80% {
+                opacity: 0.4;
+                transform: translate(-50%, 200px) scale(1.7) rotate(5deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 250px) scale(2);
+            }
+        }
+
+        /* Birthday Cake with Details - SMALLER AND LOWER */
+        .birthday-cake {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: default;
+        }
+
+        .cake-base {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFA07A 0%, #FF8C69 100%);
+            border-radius: 12px 12px 6px 6px;
+            box-shadow: 0 6px 15px rgba(255, 140, 105, 0.4);
+        }
+
+        /* Cake layers */
+        .cake-layer {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: #FFE4E1;
+            left: 0;
+        }
+
+        .cake-layer:nth-child(1) { top: 18px; }
+        .cake-layer:nth-child(2) { top: 38px; }
+        .cake-layer:nth-child(3) { bottom: 18px; }
+
+        /* Frosting top */
+        .frosting {
+            position: absolute;
+            top: -12px;
+            left: 0;
+            width: 100%;
+            height: 18px;
+            background: #FFE4E1;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 -3px 10px rgba(255, 228, 225, 0.5);
+        }
+
+        /* Candles container - centered on top of frosting */
+        .candles-container {
+            position: absolute;
+            top: -42px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .candle {
+            position: relative;
+            width: 6px;
+            height: 25px;
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 2px 2px 0 0;
+            box-shadow: 0 2px 5px rgba(255, 165, 0, 0.3);
+        }
+
+        /* Candle wick */
+        .wick {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1.5px;
+            height: 5px;
+            background: #333;
+        }
+
+        /* Animated flame */
+        .flame {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 16px;
+            background: radial-gradient(circle, #FFD700 0%, #FF6347 60%, transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 0.3s infinite alternate;
+            filter: blur(1px);
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translateX(-50%) scale(1) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) scale(1.1) translateY(-2px);
+                opacity: 0.9;
+            }
+        }
+
+        /* Flame glow */
+        .flame::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glow 0.4s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* Flames blown out */
+        .flame.out {
+            animation: blowOut 0.5s ease-out forwards;
+        }
+
+        @keyframes blowOut {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.3) translateY(-10px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5) translateY(-20px);
+            }
+        }
+
+        /* Smoke after blowing */
+        .smoke {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            opacity: 0;
+        }
+
+        .smoke.show {
+            animation: smokeRise 2s ease-out forwards;
+        }
+
+        @keyframes smokeRise {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(0);
+            }
+            30% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-50px);
+            }
+        }
+
+        /* Cake dodge animations */
+        .birthday-cake.dodge-left {
+            animation: dodgeLeft 0.6s ease-out;
+        }
+
+        .birthday-cake.dodge-right {
+            animation: dodgeRight 0.6s ease-out;
+        }
+
+        .birthday-cake.dodge-up {
+            animation: dodgeUp 0.6s ease-out;
+        }
+
+        .birthday-cake.dodge-spin {
+            animation: dodgeSpin 0.6s ease-out;
+        }
+
+        @keyframes dodgeLeft {
+            0% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-200%, -50%) rotate(-20deg) scale(1.1); }
+            100% { transform: translate(-150%, -50%); }
+        }
+
+        @keyframes dodgeRight {
+            0% { transform: translate(-50%, -50%); }
+            50% { transform: translate(100%, -50%) rotate(20deg) scale(1.1); }
+            100% { transform: translate(50%, -50%); }
+        }
+
+        @keyframes dodgeUp {
+            0% { transform: translate(-50%, -50%); }
+            30% { transform: translate(-50%, -200%) rotate(360deg) scale(1.2); }
+            60% { transform: translate(20%, -180%) rotate(720deg); }
+            100% { transform: translate(-50%, -150%); }
+        }
+
+        @keyframes dodgeSpin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(720deg) scale(0); }
+        }
+
+        /* Candles go out */
+        .birthday-cake.blown-out {
+            animation: blownOut 0.8s ease-out forwards;
+        }
+
+        @keyframes blownOut {
+            0% { 
+                filter: brightness(1);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                filter: brightness(0.7);
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% { 
+                filter: brightness(1);
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Blow button */
+        .blow-button {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFB4A2 0%, #FFCAD4 100%);
+            border: none;
+            padding: 20px 50px;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 'Caveat', cursive;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 180, 162, 0.4);
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+
+        .blow-button:hover {
+            transform: translateX(-50%) translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 180, 162, 0.6);
+        }
+
+        .blow-button:active {
+            transform: translateX(-50%) translateY(-1px) scale(1.02);
+        }
+
+        /* Success message */
+        .success-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            text-align: center;
+            opacity: 0;
+            z-index: 30;
+        }
+
+        .success-message.show {
+            animation: successAppear 0.8s ease-out forwards;
+        }
+
+        @keyframes successAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            60% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .success-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 56px;
+            color: #FF8AAE;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 138, 174, 0.3);
+        }
+
+        .success-subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFB4A2;
+            opacity: 0;
+        }
+
+        .confetti.burst {
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* === LETTER PAGE === */
+        .letter-page {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-container {
+            max-width: 750px;
+            width: 100%;
+            max-height: 80vh;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 70px 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(255, 180, 162, 0.25);
+            backdrop-filter: blur(10px);
+            animation: welcomeFadeIn 1s ease-out;
+            position: relative;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        /* Beautiful hearts background for letter - SAME AS OTHER PAGES */
+        .letter-container::before {
+            content: '💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝 💕 💖 💗 💓 💝';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 45px;
+            opacity: 0.12;
+            word-spacing: 15px;
+            line-height: 90px;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Additional gradient hearts for letter */
+        .letter-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 202, 212, 0.18) 12%, transparent 12%),
+                radial-gradient(circle, rgba(255, 180, 162, 0.12) 18%, transparent 18%);
+            background-size: 70px 70px, 100px 100px;
+            background-position: 0 0, 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .letter-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-text {
+            font-size: 19px;
+            line-height: 1.9;
+            color: #444;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            white-space: pre-wrap;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Placeholder styling */
+        .letter-text.placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .to-gallery-button {
+            background: linear-gradient(135deg, #FFB4A2 0%, #FFCAD4 100%);
+            border: none;
+            padding: 18px 45px;
+            font-size: 22px;
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 180, 162, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-top: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .to-gallery-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 180, 162, 0.6);
+        }
+
+        .to-gallery-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* === MEMORY BOOK PAGE === */
+        .memory-book-page {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Closed book */
+        .book-closed {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            border-radius: 10px;
+            box-shadow: 
+                0 20px 60px rgba(139, 69, 19, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid #654321;
+            z-index: 10;
+        }
+
+        .book-closed:hover {
+            transform: scale(1.05);
+        }
+
+        .book-cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+        }
+
+        .book-cover-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 24px;
+            color: #FFEFD5;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .open-book-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border: none;
+            padding: 18px 45px;
+            font-size: 22px;
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            color: #654321;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .open-book-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Book container */
+        .book-container {
+            display: none;
+            perspective: 2000px;
+            position: relative;
+            width: 90vw;
+            max-width: 1200px;
+            height: 80vh;
+            max-height: 700px;
+        }
+
+        .book-container.active {
+            display: block;
+            animation: bookOpen 1s ease-out;
+        }
+
+        @keyframes bookOpen {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotateY(-30deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        /* Book spread (2 pages) */
+        .book-spread {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            background: #FFFEF9;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .book-spread.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        /* Individual page */
+        .book-page {
+            flex: 1;
+            padding: 50px 40px;
+            position: relative;
+            background: #FFFEF9;
+            overflow-y: auto;
+        }
+
+        .book-page.left {
+            border-right: 2px solid #E8E8E8;
+        }
+
+        /* Page title */
+        .page-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #FF8AAE;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(255, 138, 174, 0.2);
+        }
+
+        /* Photo grid on page */
+        .page-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFD4E5 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+            border: 2px dashed #FFB4A2;
+            transition: transform 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        /* Final message page */
+        .final-message {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            text-align: left;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 245, 232, 0.9) 100%);
+        }
+
+        .final-message-text {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #444;
+            font-family: 'Quicksand', sans-serif;
+            white-space: pre-wrap;
+            margin: 0;
+            text-align: left;
+            max-height: 65vh;
+            overflow-y: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 180, 162, 0.1);
+        }
+
+        /* Style for the intro paragraph */
+        .final-message-text::first-line {
+            font-weight: 600;
+            color: #FF8AAE;
+            font-size: 17px;
+        }
+
+        /* Style for the header */
+        .final-message-text strong {
+            color: #FF8AAE;
+            font-size: 20px;
+            display: block;
+            margin: 20px 0 15px 0;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Custom scrollbar for the text */
+        .final-message-text::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .final-message-text::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .final-message-text::-webkit-scrollbar-thumb {
+            background: #FFB4A2;
+            border-radius: 4px;
+        }
+
+        .final-message-text::-webkit-scrollbar-thumb:hover {
+            background: #FF8AAE;
+        }
+
+        /* Navigation arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 180, 162, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(255, 180, 162, 0.4);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(255, 138, 174, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-arrow.prev {
+            left: -70px;
+        }
+
+        .nav-arrow.next {
+            right: -70px;
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Page flip animation - GPU accelerated */
+        .book-spread {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .book-spread.page-turn-out {
+            animation: pageTurnOut 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        }
+
+        .book-spread.page-turn-in {
+            animation: pageTurnIn 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        }
+
+        @keyframes pageTurnOut {
+            0% {
+                opacity: 1;
+                transform: translateX(0) rotateY(0deg);
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-100px) rotateY(-20deg);
+            }
+        }
+
+        @keyframes pageTurnIn {
+            0% {
+                opacity: 0;
+                transform: translateX(100px) rotateY(20deg);
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) rotateY(0deg);
+            }
+        }
+
+        /* Close book button */
+        .close-book-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 180, 162, 0.9);
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Caveat', cursive;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 200;
+        }
+
+        .close-book-button:hover {
+            background: rgba(255, 138, 174, 1);
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                height: 60vh;
+            }
+
+            .photo-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+            .photo-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+            .photo-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+            .photo-item:nth-child(4) { grid-column: span 1; grid-row: span 2; }
+            .photo-item:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+            .photo-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
+            .photo-item:nth-child(7) { grid-column: span 2; grid-row: span 1; }
+            .photo-item:nth-child(8) { grid-column: span 1; grid-row: span 1; }
+            .photo-item:nth-child(9) { grid-column: span 1; grid-row: span 1; }
+            .photo-item:nth-child(10) { grid-column: span 2; grid-row: span 1; }
+            .photo-item:nth-child(n+11) { display: none; }
+
+            .start-button {
+                padding: 18px 40px;
+                font-size: 24px;
+            }
+
+            .button-glow {
+                width: 250px;
+                height: 250px;
+            }
+
+            .game-container {
+                height: 500px;
+            }
+
+            .blow-character {
+                width: 90px;
+                height: 90px;
+                top: 60px;
+            }
+
+            .birthday-cake {
+                font-size: 90px;
+            }
+
+            .blow-button {
+                padding: 16px 40px;
+                font-size: 26px;
+                bottom: 60px;
+            }
+
+            .success-title {
+                font-size: 42px;
+            }
+
+            .letter-container {
+                padding: 50px 35px;
+            }
+
+            .letter-text {
+                font-size: 17px;
+                line-height: 1.8;
+            }
+
+            .to-gallery-button {
+                padding: 16px 35px;
+                font-size: 20px;
+            }
+
+            .book-closed {
+                width: 300px;
+                height: 400px;
+            }
+
+            .book-cover-title {
+                font-size: 32px;
+            }
+
+            .book-cover-subtitle {
+                font-size: 20px;
+            }
+
+            .book-container {
+                width: 95vw;
+                height: 70vh;
+            }
+
+            .book-page {
+                padding: 30px 20px;
+            }
+
+            .page-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .page-photos {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .nav-arrow.prev {
+                left: -50px;
+            }
+
+            .nav-arrow.next {
+                right: -50px;
+            }
+
+            .final-message {
+                padding: 40px 30px;
+            }
+
+            .final-message-text {
+                font-size: 16px;
+            }
+
+            .welcome-content {
+                padding: 40px 30px;
+            }
+
+            .welcome-title {
+                font-size: 36px;
+            }
+
+            .welcome-message {
+                font-size: 18px;
+            }
+
+            .continue-button {
+                padding: 16px 35px;
+                font-size: 20px;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-text">Loading your special gift... 🎁</div>
+        <div class="loading-hearts">
+            <span class="loading-heart">💕</span>
+            <span class="loading-heart">💖</span>
+            <span class="loading-heart">💗</span>
+        </div>
+    </div>
+    <!-- Opening Photo Mosaic Page -->
+    <section class="page photo-mosaic-page active" id="photoMosaicPage">
+        <!-- Floating hearts background -->
+        <div class="floating-hearts" id="floatingHearts"></div>
+
+        <!-- Photo Grid -->
+        <div class="photo-grid" id="photoGrid"></div>
+
+        <!-- Center Button -->
+        <div class="center-button-container">
+            <div class="button-glow"></div>
+            <button class="start-button" id="startButton">
+                <span class="sparkle">✨</span>
+                <span class="sparkle">💫</span>
+                <span class="sparkle">⭐</span>
+                <span class="sparkle">✨</span>
+                LET'S GO...😚
+            </button>
+        </div>
+    </section>
+
+    <!-- Elegant Page Transition -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Cake Game Page -->
+    <section class="page cake-game-page" id="cakeGamePage">
+        <div class="floating-hearts" id="cakeHearts"></div>
+
+        <div class="game-container">
+            <!-- Circular character -->
+            <div class="blow-character" id="blowCharacter">
+                <div class="char-eye left"></div>
+                <div class="char-eye right"></div>
+                <div class="char-mouth"></div>
+                <div class="wind-effect" id="windEffect">💨</div>
+            </div>
+
+            <!-- Birthday cake with animated candles -->
+            <div class="birthday-cake" id="birthdayCake">
+                <div class="cake-base">
+                    <div class="frosting"></div>
+                    <div class="cake-layer"></div>
+                    <div class="cake-layer"></div>
+                    <div class="cake-layer"></div>
+                    <div class="candles-container" id="candlesContainer">
+                        <div class="candle">
+                            <div class="wick"></div>
+                            <div class="flame"></div>
+                            <div class="smoke">💨</div>
+                        </div>
+                        <div class="candle">
+                            <div class="wick"></div>
+                            <div class="flame"></div>
+                            <div class="smoke">💨</div>
+                        </div>
+                        <div class="candle">
+                            <div class="wick"></div>
+                            <div class="flame"></div>
+                            <div class="smoke">💨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blow button -->
+            <button class="blow-button" id="blowButton">BLOW 💨</button>
+
+            <!-- Success message (hidden initially) -->
+            <div class="success-message" id="successMessage">
+                <h1 class="success-title">Finally! Happy Birthday! 🎉</h1>
+                <p class="success-subtitle">Time for your special letter...</p>
+                <button class="continue-button" id="toLetterButton">Read Your Letter 💌</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Page -->
+    <section class="page welcome-page" id="welcomePage">
+        <div class="floating-hearts" id="welcomeHearts"></div>
+        
+        <!-- Decorative elements -->
+        <div class="welcome-decor">💖</div>
+        <div class="welcome-decor">✨</div>
+        <div class="welcome-decor">🌸</div>
+        <div class="welcome-decor">💫</div>
+
+        <div class="welcome-content">
+            <h1 class="welcome-title">Happy Birthday,<br>My Gorgeous Choti Vaibz 😚</h1>
+            <p class="welcome-message">
+                Hey gorgeous! I can't believe another year has passed with you in my life. You make everything brighter, funnier, and so much more meaningful. Today is all about celebrating YOU - the amazing person you are, the incredible friend you've been, and all the beautiful moments we've shared together. So sit back, relax, and let me take you through a little journey I've put together just for you. Got so much more coming your way! 💕
+            </p>
+            <button class="continue-button" id="continueButton">Continue the Journey ✨</button>
+        </div>
+    </section>
+
+    <!-- Letter Page -->
+    <section class="page letter-page" id="letterPage">
+        <div class="floating-hearts" id="letterHearts"></div>
+        
+        <div class="letter-container">
+            <p class="letter-text" id="letterText">Hey bachaaa 🥹
+Many Many Many Many Many Many Happy Returns Of The Day ❣️💕💕💕💕🎂🍰
+Happy Birthday pillaaaaa 😘
+
+Kaisi hai pilla? MI toh mst hu tu bhi mst hai ik kyuki Mai hu na tere sath isiliye 🥹🥹
+
+Tera agar dekha jaye toh academic year ke hisab se 2nd birthday hai lekin kya kare naseeb kharab tha na Mera isiliye last birthday me bhi tha lekin kya hua nhi tha toh iss birthday pe toh hu na 
+And uk I am very happy about thissssss 🥹🥹
+Baccha ka birthday hai nd mai uske sath rhunga aaj 🥹🥹 
+Aaj apan pura try karege ki tera birthday special ho, nd uske liye aage bohot kuch hai lekin kuch baatein yaha ho jaye, hai na ?
+
+Sabse pehle toh apne bich me itne me bohot kuch chl rha zagde, grp , ye n vo gao bhar ka lekin mere liye tu bohot zaruri hai 🥹💕😌
+Apne bich ab lagbagh 1.5 saal ho gaye aur bhai apan itnu si derrr me kitne pass kitne close ho gaye hai.
+Kitna jyada comfortable hai apan dono ek mek ke sath, kitna pyaar krte apan ek dusre ko lekin kbhi vo relationship wali feelings nhi aayi apan dono me kitni aachi baat hai yaar 🥹 aur mai toh chata kbhi aisi feelings aaye bhi na itni aachi dosti jo hai apni 🧿. 
+Yaar apan ne kitne saare chize kiye abtk, first we started from knowing each other from strangers to friends, then we connected together, then my first love you 🥹🥹🥹🥹🥹🥹, then uske baad forehead, then hugs and ek head pe kissi bolke 10 🥹🥹 and aisa bhi nhi ki tu uncomfortable hai in sab me, tu bhi positive response de rhi so it feels better, ki apan kaha the aur just in this short amount of time apan kaha aa gaye 🥹. 
+Apan zagad te apan baat krte apan suljhate apan thik krte we both are soo much understanding, mai hu na hu idk lekin tu hai mujhe itna pta hai, dekh mai hamesha bolta ki apne bich kitna bhi bura vakt aa jaye mai promise krta hu ki mai tera Best freind hamesha rhunga mai kbhi apne friendship se puche nhi hatunga 🥹🥹🧿💖.
+Ukw mai apni friendship ki bohot value krta nd uk why? 
+Bhai simple hai, tere jaise ladki ke sath koi ho aur vo value na kare, kalank hai aise logo ke upar, bakiyo ka nhi pta mai toh mere bacche ki bohot value krta, mere liye bohot precious hai tu ye hamesha yaad rakhna 🥹🥹🥹💖🧿🧿❤️💕💓❣️🎀😻
+
+Dekh apan ne apni dosti yaha tk layi hai nd mai ye chahta hu ki apan ye dosti aur bohot aage tk leke jaye, tere efforts ki value mai krta hu and ik mere efforts ki value bhi tu karti hai nd utna he kafi hai apni friendship ko aage badhte rakhna 🥹. 
+Yeee dostiii, hmmm nhi todenge 
+Todenge hmmmm agar, ye sath na chodenge 
+Wow kitni mst aur pyaari lines hai 🥹🎀
+
+
+Dekh pilla mere se bohot saari mistakes hoti hai but yaar apna samajh ke pls maaf krdiya kar 👉👈🥺, tu he toh hai re baba meri ek lauti vrna kiske paas jaake itni galtiya karu, nakhre karu bta bara 🥺🥹
+
+Baki baatein apan personally milke karenge tu aage ki journey enjoy kar 😘
+Once again happy birthday donnn 💓💖❣️🎀
+Love you sooo much from the bottom of my heart 💖🫂🫂
+Please baccha mujhe kbhi chod ke mt jana, sath rehna hamesha mai toh hu he sath me tere 🧿🧿💕💕💓❣️🎀💖
+Love you sooooo much babeeee 😚 🤌 ❤️ 💖 💖 
+Milte hai 😚🎀❣️💓
+</p>
+            
+            <button class="to-gallery-button" id="toGalleryButton">See Our Memories 📸</button>
+        </div>
+    </section>
+
+    <!-- Memory Book Page -->
+    <section class="page memory-book-page" id="memoryBookPage">
+        <div class="floating-hearts" id="bookHearts"></div>
+
+        <!-- Closed Book -->
+        <div class="book-closed" id="bookClosed">
+            <h1 class="book-cover-title">Our Memories</h1>
+            <p class="book-cover-subtitle">A Journey Through Time 💕</p>
+            <button class="open-book-button">Open Book 📖</button>
+        </div>
+
+        <!-- Open Book -->
+        <div class="book-container" id="bookContainer">
+            <button class="close-book-button" id="closeBookBtn">Close ✕</button>
+            
+            <!-- Navigation Arrows -->
+            <button class="nav-arrow prev" id="prevPage">‹</button>
+            <button class="nav-arrow next" id="nextPage">›</button>
+
+            <!-- Spread 1: Traditional Day -->
+            <div class="book-spread" data-spread="0">
+                <div class="book-page left">
+                    <h2 class="page-title">Traditional Day</h2>
+                    <div class="page-photos">
+                        <div class="photo-placeholder"> <img src="./images/T6.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/T3.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/T8.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/T4.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+                <div class="book-page right">
+                    <div class="page-photos" style="margin-top: 80px;">
+                        <div class="photo-placeholder"><img src="./images/T5.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/T7.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/T1.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/T2.jpeg" alt="Traditional Day" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 2: Close Moments -->
+            <div class="book-spread" data-spread="1">
+                <div class="book-page left">
+                    <h2 class="page-title">Close Moments</h2>
+                    <div class="page-photos">
+                        <div class="photo-placeholder"><img src="./images/C3.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C8.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C5.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C7.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+                <div class="book-page right">
+                    <div class="page-photos" style="margin-top: 80px;">
+                        <div class="photo-placeholder"><img src="./images/C1.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C2.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C4.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C6.jpeg" alt="Close Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 3: Happy Moments -->
+            <div class="book-spread" data-spread="2">
+                <div class="book-page left">
+                    <h2 class="page-title">Happy Moments</h2>
+                    <div class="page-photos">
+                        <div class="photo-placeholder"><img src="./images/HP2.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/HP5.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/HP3.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/HP8.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+                <div class="book-page right">
+                    <div class="page-photos" style="margin-top: 80px;">
+                        <div class="photo-placeholder"><img src="./images/HP7.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/HP6.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/HP1.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/HP4.jpeg" alt="Happy Moments" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 4: Adventure -->
+            <div class="book-spread" data-spread="3">
+                <div class="book-page left">
+                    <h2 class="page-title">Adventure</h2>
+                    <div class="page-photos">
+                        <div class="photo-placeholder"><img src="./images/A1.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/A2.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/A3.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/A4.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+                <div class="book-page right">
+                    <div class="page-photos" style="margin-top: 80px;">
+                        <div class="photo-placeholder"><img src="./images/A5.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/A6.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/A7.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/A8.jpeg" alt="Adventure" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 5: My Favourite Pics -->
+            <div class="book-spread" data-spread="4">
+                <div class="book-page left">
+                    <h2 class="page-title">My Favourite Pics</h2>
+                    <div class="page-photos">
+                        <div class="photo-placeholder"><img src="./images/FV2.jpeg" alt="Favourite Pic 1" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/H2.jpg" alt="Favourite Pic 2" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/FV4.jpg" alt="Favourite Pic 3" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C6.jpeg" alt="Favourite Pic 4" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+                <div class="book-page right">
+                    <div class="page-photos" style="margin-top: 80px;">
+                        <div class="photo-placeholder"><img src="./images/FV1.jpeg" alt="Favourite Pic 5" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/H13.jpg" alt="Favourite Pic 6" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/C7.jpeg" alt="Favourite Pic 7" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="photo-placeholder"><img src="./images/FV3.jpeg" alt="Favourite Pic 8" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spread 6: Final Message -->
+            <div class="book-spread" data-spread="5">
+                <div class="book-page left final-message">
+                    <p class="final-message-text" id="finalMessageText">I hope you enjoyed this little journey I built for you. Honestly, I was planning to buy you a gift, but right now I don't have enough money to get you something actually worthy of you. So I thought — instead of investing money in a gift, why not invest my precious time for my precious person? I first did a lots of reasearch then started coding, debugging and many more things happened while making this whole project, but everytime when I worked on this I had you in my mind which made me calmer and I did everything effectively, so all thanks to you I was able to make this on time, Not exaggerating, but it took me 1.5-2 weeks making this and I hope every moment of this was worth it. I dont want anything in rerturn, IT's just that i want to see you happy all the time 😊 And lastly... I have hundreds of thousands of reasons to love you, but here are just 100 of them 🥹💕
+
+
+💕 100 REASONS WHY I LOVE YOU 💕
+
+1. I love you because your smile heals me.✨
+2. You make my heart feel safe.💗
+3. You understand me without words.🤝
+4. You make every moment special.✨
+5. You calm my chaos.🌿
+6. You choose me every day.🤍
+7. You make me want to be better.🌸
+8. You see the good in me.✨
+9. Your voice feels like home.🎧💗
+10. You make me laugh genuinely.😂💗
+11. Your presence feels warm.☀️
+12. You're gentle with my heart.💗
+13. You remember the small things.🌸
+14. You're my safe place.🏠
+15. You make me feel wanted.💕
+16. You support my dreams.🌙
+17. You're real with me.🤍
+18. You understand my silence.🤫💗
+19. Your heart is beautiful.💗
+20. You inspire me.✨
+21. You feel like destiny.🌌
+22. You never pretend with me.🌿
+23. You make me feel seen.👀💗
+24. You know when I'm not okay.😔🤍
+25. You don't judge me.💚
+26. You believe in me.✨
+27. You're patient with me.🕊️
+28. You stay, even when it's hard.🤍
+29. You make life brighter.☀️
+30. Your eyes speak love.👁️💗
+31. You hold my heart softly.💗
+32. You're my peace.🌙
+33. I can be myself with you.🌸
+34. You respect me.🤝
+35. You never let me feel alone.🌙
+36. You're my comfort.🫶
+37. You make me smile without trying.😊💗
+38. You care in silent ways.💗
+39. Your love is pure.🤍
+40. You understand my feelings.💗
+41. You make me feel enough.🫂
+42. You listen to me.🎧💗
+43. You're soft-hearted.🌸
+44. You're loyal.🤍
+45. You choose kindness.🌿
+46. Your heart is rare.💗
+47. You're my best friend.👫
+48. You heal me.🕊️
+49. You make me feel lucky.🍀
+50. You bring out the best in me.✨
+51. You value me.🤍
+52. You keep my secrets.🔐💗
+53. You love me at my worst.😔💗
+54. We grow together.🌱
+55. You never make me feel unwanted.🤍
+56. You love me truly.💗
+57. You're soft but strong.💗💪
+58. You're my person.🫶
+59. You match my vibe.✨
+60. You don't give up on me.🤍
+61. You care about my feelings.💗
+62. You choose me even on bad days.🌧️❤️
+63. You're my calm.🌿
+64. You're genuine.✨
+65. You make everything better.🫶
+66. You love me in small ways.🌸
+67. You appreciate me.🤗
+68. Your hugs are therapy.❣️
+69. You make me feel special.💗
+70. You make me feel safe.🍬
+71. You're consistent.🌙
+72. You bring peace to my mind.🧘💗
+73. Your love is steady.🤍
+74. You make life beautiful.🫶
+75. You complete missing parts of me.💗
+76. You look at me with love.👀💗
+77. You protect my heart.💗
+78. You stay by my side.🫂
+79. You never make me feel less.🤍
+80. You celebrate my wins.🎉💗
+81. You calm my overthinking.🧠🌿
+82. You speak softly.🕊️
+83. You love me truly.🤍
+84. You feel like a blessing.🌼
+85. You accept all of me.💗
+86. You bring peace to my soul.🌙🤍
+87. You understand my emotions.😌💗
+88. You're loyal in a world full of temporary people.💗
+89. You make life feel warm.🤝
+90. Your love feels safe.💗
+91. You choose me over and over.🔄❤️
+92. You trust me.💗
+93. You make my heart smile.😊💗
+94. You feel like home.🏠💗
+95. You're my comfort person.🫶
+96. You make me feel alive.🌟
+97. You're the peace I searched for.🌙
+98. You make my heart soft.💗
+99. You're my forever person.🔗💗
+100. I love you simply because you're you✨
+
+
+You will always be precious,
+With all my love 💗✨</p>
+                </div>
+                <div class="book-page right final-message">
+                    <h2 class="page-title" style="margin-top: 200px;">Once Again!<br><br><br>Happy Birthday,<br>My Cutie Donnn 💕</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Generate placeholder photos with beautiful colors
+        const photoGrid = document.getElementById('photoGrid');
+        const colors = [
+            'linear-gradient(135deg, #FFB4A2 0%, #FFCAD4 100%)',
+            'linear-gradient(135deg, #FFD4B8 0%, #F4D58D 100%)',
+            'linear-gradient(135deg, #FFCAD4 0%, #E8C4E0 100%)',
+            'linear-gradient(135deg, #F4D58D 0%, #FFB4A2 100%)',
+            'linear-gradient(135deg, #E8C4E0 0%, #FFD4B8 100%)',
+            'linear-gradient(135deg, #FFCAD4 0%, #FFB4A2 100%)',
+            'linear-gradient(135deg, #FFB4A2 0%, #F4D58D 100%)',
+            'linear-gradient(135deg, #FFD4B8 0%, #FFCAD4 100%)',
+        ];
+
+        // ADD YOUR 23 IMAGE PATHS HERE
+        // Replace these with your actual image filenames
+        const imagePaths = [
+            './images/H1.jpg',
+            './images/H2.jpg',
+            './images/H3.jpg',
+            './images/H4.jpg',
+            './images/H5.jpg',
+            './images/H6.jpg',
+            './images/H7.jpg',
+            './images/H8.jpg',
+            './images/H9.jpg',
+            './images/H10.jpg',
+            './images/H11.jpg',
+            './images/H12.jpg',
+            './images/H13.jpg',
+            './images/H14.jpg',
+            './images/H15.jpg',
+            './images/H16.jpg',
+            './images/H17.jpg',
+            './images/H18.jpg',
+            './images/H19.jpg',
+            './images/H20.jpg',
+            './images/H21.jpg',
+            './images/H22.jpg',
+            './images/H23.jpg'
+        ];
+
+        // Create 23 photo items with your images
+        for (let i = 0; i < 23; i++) {
+            const photoItem = document.createElement('div');
+            photoItem.className = 'photo-item';
+            
+            // Use actual images instead of placeholder gradients
+            photoItem.innerHTML = `<div class="photo-content"><img src="${imagePaths[i]}" alt="Memory ${i + 1}"></div>`;
+            
+            photoGrid.appendChild(photoItem);
+        }
+
+        // Generate floating hearts for opening page
+        const floatingHearts = document.getElementById('floatingHearts');
+        const heartEmojis = ['💖', '💕', '💗', '💓', '💝', '🌸', '🌺', '🦋', '✨', '💫'];
+        
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            floatingHearts.appendChild(heart);
+        }
+
+        // Generate floating hearts for welcome page
+        const welcomeHearts = document.getElementById('welcomeHearts');
+        for (let i = 0; i < 12; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            welcomeHearts.appendChild(heart);
+        }
+
+        // Elegant page transition
+        const startButton = document.getElementById('startButton');
+        const photoMosaicPage = document.getElementById('photoMosaicPage');
+        const pageTransition = document.getElementById('pageTransition');
+        const welcomePage = document.getElementById('welcomePage');
+
+        startButton.addEventListener('click', function() {
+            // Create floating hearts
+            const heartEmojis = ['💕', '💖', '💗', '💓', '💝'];
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'transition-heart';
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = (Math.random() * 0.5) + 's';
+                pageTransition.appendChild(heart);
+            }
+
+            // Show elegant transition
+            pageTransition.classList.add('active');
+
+            // After 1.5 seconds, switch pages
+            setTimeout(() => {
+                photoMosaicPage.classList.remove('active');
+                welcomePage.classList.add('active');
+                
+                // Fade out transition
+                setTimeout(() => {
+                    pageTransition.classList.remove('active');
+                    // Clean up hearts
+                    setTimeout(() => {
+                        pageTransition.innerHTML = '';
+                    }, 600);
+                }, 300);
+            }, 1500);
+        });
+
+        // Continue button (placeholder for now)
+        document.getElementById('continueButton').addEventListener('click', function() {
+            welcomePage.classList.remove('active');
+            document.getElementById('cakeGamePage').classList.add('active');
+        });
+
+        // === CAKE GAME LOGIC ===
+        const blowButton = document.getElementById('blowButton');
+        const birthdayCake = document.getElementById('birthdayCake');
+        const blowCharacter = document.getElementById('blowCharacter');
+        const windEffect = document.getElementById('windEffect');
+        const successMessage = document.getElementById('successMessage');
+        const gameContainer = document.querySelector('.game-container');
+
+        let blowCount = 0;
+        const dodgeAnimations = ['dodge-left', 'dodge-right', 'dodge-up'];
+
+        // Generate floating hearts for cake page
+        const cakeHearts = document.getElementById('cakeHearts');
+        for (let i = 0; i < 12; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            cakeHearts.appendChild(heart);
+        }
+
+        blowButton.addEventListener('click', function() {
+            blowCount++;
+
+            // Trigger wind effect - blows from character to cake
+            windEffect.classList.add('active');
+            setTimeout(() => windEffect.classList.remove('active'), 1000);
+
+            if (blowCount === 1) {
+                // First blow - cake dodges left, character surprised
+                birthdayCake.classList.remove(...dodgeAnimations);
+                setTimeout(() => birthdayCake.classList.add('dodge-left'), 10);
+                blowCharacter.className = 'blow-character surprised';
+                
+            } else if (blowCount === 2) {
+                // Second blow - cake dodges right, character annoyed
+                birthdayCake.classList.remove(...dodgeAnimations);
+                setTimeout(() => birthdayCake.classList.add('dodge-right'), 10);
+                blowCharacter.className = 'blow-character annoyed';
+                
+            } else if (blowCount === 3) {
+                // Third blow - cake dodges up with spin, character ANGRY, button changes
+                birthdayCake.classList.remove(...dodgeAnimations);
+                setTimeout(() => birthdayCake.classList.add('dodge-up'), 10);
+                blowCharacter.className = 'blow-character angry';
+                blowButton.textContent = 'BLOW (LAST TIME 🥹)';
+                
+            } else if (blowCount === 4) {
+                // Final blow - SUCCESS!
+                birthdayCake.classList.remove(...dodgeAnimations);
+                birthdayCake.classList.add('blown-out');
+                blowCharacter.className = 'blow-character happy';
+                
+                // Blow out candles with smoke
+                const flames = document.querySelectorAll('.flame');
+                const smokes = document.querySelectorAll('.smoke');
+                flames.forEach((flame, index) => {
+                    setTimeout(() => {
+                        flame.classList.add('out');
+                        smokes[index].classList.add('show');
+                    }, index * 150);
+                });
+
+                // Hide character, cake and button
+                setTimeout(() => {
+                    blowCharacter.classList.add('hide');
+                    birthdayCake.style.opacity = '0';
+                    birthdayCake.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                    blowButton.style.opacity = '0';
+                    blowButton.style.pointerEvents = 'none';
+                }, 800);
+
+                // Show success message
+                setTimeout(() => {
+                    successMessage.classList.add('show');
+                }, 1400);
+
+                // Create confetti explosion
+                setTimeout(() => createConfetti(), 1000);
+            }
+        });
+
+        function createConfetti() {
+            const colors = ['#FFB4A2', '#FFCAD4', '#F4D58D', '#E8C4E0', '#FFD4B8'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '50%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                gameContainer.appendChild(confetti);
+                
+                setTimeout(() => confetti.classList.add('burst'), 10);
+                
+                // Remove after animation
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // To letter button (placeholder)
+        document.getElementById('toLetterButton').addEventListener('click', function() {
+            document.getElementById('cakeGamePage').classList.remove('active');
+            document.getElementById('letterPage').classList.add('active');
+        });
+
+        // Generate floating hearts for letter page
+        const letterHearts = document.getElementById('letterHearts');
+        for (let i = 0; i < 12; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            letterHearts.appendChild(heart);
+        }
+
+        // To gallery button (placeholder for now)
+        document.getElementById('toGalleryButton').addEventListener('click', function() {
+            document.getElementById('letterPage').classList.remove('active');
+            document.getElementById('memoryBookPage').classList.add('active');
+        });
+
+        // Generate floating hearts for memory book page
+        const bookHearts = document.getElementById('bookHearts');
+        for (let i = 0; i < 12; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            bookHearts.appendChild(heart);
+        }
+
+        // === MEMORY BOOK LOGIC ===
+        const bookClosed = document.getElementById('bookClosed');
+        const bookContainer = document.getElementById('bookContainer');
+        const closeBookBtn = document.getElementById('closeBookBtn');
+        const prevPageBtn = document.getElementById('prevPage');
+        const nextPageBtn = document.getElementById('nextPage');
+        const spreads = document.querySelectorAll('.book-spread');
+        
+        let currentSpread = 0;
+        let isAnimating = false;
+
+        // Open book
+        bookClosed.addEventListener('click', function() {
+            bookClosed.style.display = 'none';
+            bookContainer.classList.add('active');
+            showSpread(0);
+        });
+
+        // Close book
+        closeBookBtn.addEventListener('click', function() {
+            bookContainer.classList.remove('active');
+            setTimeout(() => {
+                bookClosed.style.display = 'flex';
+                spreads.forEach(s => s.classList.remove('active'));
+                currentSpread = 0;
+            }, 300);
+        });
+
+        // Show specific spread
+        function showSpread(index) {
+            if (isAnimating) return;
+            
+            spreads.forEach((s, i) => {
+                s.classList.remove('active', 'page-turn-in', 'page-turn-out');
+                if (i !== index) {
+                    s.style.visibility = 'hidden';
+                }
+            });
+            
+            spreads[index].style.visibility = 'visible';
+            spreads[index].classList.add('active', 'page-turn-in');
+            currentSpread = index;
+            
+            // Update navigation buttons
+            prevPageBtn.disabled = (currentSpread === 0);
+            nextPageBtn.disabled = (currentSpread === spreads.length - 1);
+            
+            setTimeout(() => {
+                spreads[index].classList.remove('page-turn-in');
+            }, 600);
+        }
+
+        // Turn page with smooth animation
+        function turnPage(direction) {
+            if (isAnimating) return;
+            
+            const newIndex = currentSpread + direction;
+            if (newIndex < 0 || newIndex >= spreads.length) return;
+            
+            isAnimating = true;
+            
+            // Current page turns out
+            spreads[currentSpread].classList.add('page-turn-out');
+            
+            setTimeout(() => {
+                spreads[currentSpread].classList.remove('active', 'page-turn-out');
+                spreads[currentSpread].style.visibility = 'hidden';
+                
+                // New page turns in
+                currentSpread = newIndex;
+                spreads[currentSpread].style.visibility = 'visible';
+                spreads[currentSpread].classList.add('active', 'page-turn-in');
+                
+                // Update buttons
+                prevPageBtn.disabled = (currentSpread === 0);
+                nextPageBtn.disabled = (currentSpread === spreads.length - 1);
+                
+                setTimeout(() => {
+                    spreads[currentSpread].classList.remove('page-turn-in');
+                    isAnimating = false;
+                }, 600);
+            }, 300);
+        }
+
+        // Navigation
+        prevPageBtn.addEventListener('click', () => turnPage(-1));
+        nextPageBtn.addEventListener('click', () => turnPage(1));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!bookContainer.classList.contains('active')) return;
+            
+            if (e.key === 'ArrowLeft') turnPage(-1);
+            if (e.key === 'ArrowRight') turnPage(1);
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        bookContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        bookContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next page
+                    turnPage(1);
+                } else {
+                    // Swipe right - previous page
+                    turnPage(-1);
+                }
+            }
+        }
+
+        // Remove loading screen after 2 seconds
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.remove();
+            }
+        }, 2500);
+    </script>
+</body>
+</html>
